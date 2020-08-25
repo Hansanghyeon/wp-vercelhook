@@ -1,22 +1,29 @@
+"use strict";
+
 (function () {
-  window.addEventListener("load", () => {
-    const deployButton = document.querySelector(
+  window.addEventListener("load", function () {
+    var deployButton = document.querySelector(
       "#wp-admin-bar-vercelHookReqBtn > a"
     );
+
     if (deployButton) {
-      deployButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        // To make the POST Request will use
+      deployButton.addEventListener("click", function (event) {
+        event.preventDefault(); // To make the POST Request will use
         // the gud-ol jQuery that comes with WordPress
+
         jQuery
           .ajax({
-            url: event.target.href, // Our Deploy Hook URL here,
+            url: event.target.href,
+            // Our Deploy Hook URL here,
             method: "POST",
           })
-          .done(() => {
-            alert(
-              "Your website will be updated shortly. Check in a couple of minutes"
-            );
+          .fail(function () {
+            alert("Vercel에 업데이트 요청을 실패하였습니다.");
+          })
+          .then(function (result, status, responseObj) {
+            console.log("vercel web hook response status: ", status);
+            console.log("vercel web hook response responseObj: ", responseObj);
+            alert("Vercel에 업데이트 요청하였습니다.");
           });
       });
     }
