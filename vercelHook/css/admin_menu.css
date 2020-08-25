@@ -1,0 +1,5 @@
+#toplevel_page_vercel-hook .wp-menu-image img {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 7px 0;
+}
