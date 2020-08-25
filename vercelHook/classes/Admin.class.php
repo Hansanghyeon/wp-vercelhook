@@ -19,6 +19,18 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
       add_action('admin_enqueue_scripts', array($this, 'admin_menu_style'));
       add_action('admin_menu', array($this, 'admin_menu'));
       add_action('admin_init', array($this, 'registerAndBuildFields'));
+      add_action('admin_bar_menu', array($this, 'add_deploy_button'), 100);
+    }
+
+    public function add_deploy_button($wp_admin_bar)
+    {
+      $args = array(
+        'id' => 'vercelHookReqBtn', // ID of the button added. 
+        'title' => '<img class="vercel_icon" src="' . VERCEL_HOOK_URL . '/img/icon.jpg"/><span class="cloth">Deploy Now</span>',
+        'href' => '#'
+      );
+
+      $wp_admin_bar->add_node($args);
     }
 
     public function admin_menu()
@@ -41,6 +53,8 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
     public function admin_menu_style($hook)
     {
       wp_enqueue_style('VERCEL-admin-menu', VERCEL_HOOK_URL . '/css/admin_menu.css', array(), '1.0.0');
+      wp_enqueue_style('VERCEL-admin-menu-bar', VERCEL_HOOK_URL . '/css/admin_menu_bar.css', array(), '1.0.0');
+
 
       if ($hook == 'toplevel_page_vercel-hook') {
         wp_enqueue_style('VERCEL-page', VERCEL_HOOK_URL . '/css/style.min.css', array(), '1.0.0');
