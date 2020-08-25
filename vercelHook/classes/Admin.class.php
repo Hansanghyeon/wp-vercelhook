@@ -20,6 +20,7 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
       add_action('admin_menu', array($this, 'admin_menu'));
       add_action('admin_init', array($this, 'registerAndBuildFields'));
       if (get_option(VERCEL_HOOK_Name) != '') {
+        add_action('admin_enqueue_scripts', array($this, 'admin_menu_bar_style'));
         add_action('admin_bar_menu', array($this, 'add_deploy_button'), 100);
       }
     }
@@ -29,7 +30,7 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
       $args = array(
         'id' => 'vercelHookReqBtn', // ID of the button added. 
         'title' => '<img class="vercel_icon" src="' . VERCEL_HOOK_URL . '/img/icon.jpg"/><span class="cloth">Deploy Now</span>',
-        'href' => '#'
+        'href' => get_option(VERCEL_HOOK_Name)
       );
 
       $wp_admin_bar->add_node($args);
@@ -55,11 +56,15 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
     public function admin_menu_style($hook)
     {
       wp_enqueue_style('VERCEL-admin-menu', VERCEL_HOOK_URL . '/css/admin_menu.css', array(), '1.0.0');
-      wp_enqueue_style('VERCEL-admin-menu-bar', VERCEL_HOOK_URL . '/css/admin_menu_bar.css', array(), '1.0.0');
 
       if ($hook == 'toplevel_page_vercel-hook') {
         wp_enqueue_style('VERCEL-page', VERCEL_HOOK_URL . '/css/style.min.css', array(), '1.0.0');
       }
+    }
+    public function admin_menu_bar_style()
+    {
+      wp_enqueue_style('VERCEL-admin-menu-bar', VERCEL_HOOK_URL . '/css/admin_menu_bar.css', array(), '1.0.0');
+      wp_enqueue_script('VERCEL-admin-menu-bar', VERCEL_HOOK_URL . '/js/index.js', array(), '1.0.0');
     }
 
 
