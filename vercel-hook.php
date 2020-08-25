@@ -9,11 +9,11 @@
  * License: GLPv2 or later
  */
 
-define('VERCEL_HOOK_PATH', plugin_dir_path(__FILE__));
-define('VERCEL_HOOK_URL', plugins_url('', __FILE__));
+define('VERCEL_HOOK_PATH', plugin_dir_path(__FILE__) . '/src');
+define('VERCEL_HOOK_URL', plugins_url('', __FILE__) . '/src');
 define('VERCEL_HOOK_Name', 'vercel_webhook_url');
 define('VERCEL_HOOK_Field', 'vercel_hook_general_settings');
 
-require_once VERCEL_HOOK_PATH . 'classes/Admin.class.php';
+require_once VERCEL_HOOK_PATH . '/classes/Admin.class.php';
 
 register_activation_hook(__FILE__, array('VERCEL_HOOK_Admin', 'active'));

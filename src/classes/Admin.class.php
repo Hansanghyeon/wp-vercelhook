@@ -50,7 +50,7 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
 
     public function admin_list()
     {
-      include VERCEL_HOOK_PATH . 'pages/setting.php';
+      include VERCEL_HOOK_PATH . '/pages/setting.php';
     }
 
     public function admin_menu_style($hook)
