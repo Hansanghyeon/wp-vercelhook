@@ -43,6 +43,7 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
       wp_enqueue_style('VERCEL-admin-menu', VERCEL_HOOK_URL . '/css/admin_menu.css', array(), '1.0.0');
 
       if ($hook == 'toplevel_page_vercel-hook') {
+        wp_enqueue_style('VERCEL-page', VERCEL_HOOK_URL . '/css/style.min.css', array(), '1.0.0');
         wp_enqueue_script('input-check', VERCEL_HOOK_URL . '/js/inputCheck.js', array(), '1.0.0', false);
       }
     }
