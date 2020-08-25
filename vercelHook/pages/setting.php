@@ -2,6 +2,7 @@
 ?>
 
 <div class="wrap vercel-hook-markup">
+  <h2></h2>
   <div class="vh-header">
     <h2>Vercel Hook Settings</h2>
     <span class="made">
