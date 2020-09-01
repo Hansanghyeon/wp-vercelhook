@@ -13,7 +13,7 @@
 
         jQuery
           .ajax({
-            url: event.target.href,
+            url: deployButton.href,
             // Our Deploy Hook URL here,
             method: "POST",
           })

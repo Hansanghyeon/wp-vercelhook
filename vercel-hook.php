@@ -3,7 +3,7 @@
  * Plugin Name: Vercel Hook
  * Plugin URI: 
  * Description: Vercel의 웹훅 요청하는 플러그인입니다.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: 한상현
  * Author URI: https://github.com/Hansanghyeon
  * License: GLPv2 or later
