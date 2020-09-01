@@ -21,6 +21,7 @@ if (!class_exists('VERCEL_HOOK_Admin')) {
       add_action('admin_init', array($this, 'registerAndBuildFields'));
       if (get_option(VERCEL_HOOK_Name) != '') {
         add_action('admin_enqueue_scripts', array($this, 'admin_menu_bar_style'));
+        add_action('wp_enqueue_scripts', array($this, 'admin_menu_bar_style'));
         add_action('admin_bar_menu', array($this, 'add_deploy_button'), 100);
       }
     }
